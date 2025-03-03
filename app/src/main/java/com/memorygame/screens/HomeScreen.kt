@@ -35,15 +35,14 @@ fun HomeScreen(viewModel: MemoryGameViewModel, navController: NavHostController)
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(10.dp)
-                .fillMaxSize()
+            modifier            = Modifier
+                                    .background(MaterialTheme.colorScheme.primary)
+                                    .padding(10.dp)
+                                    .fillMaxSize()
         ) {
 
             TitleText()
             ButtonGrid(viewModel)
-
 
         }
     }

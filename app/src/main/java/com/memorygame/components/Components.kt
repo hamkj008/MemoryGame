@@ -1,6 +1,6 @@
 package com.memorygame.components
-import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -44,11 +47,18 @@ import kotlinx.coroutines.launch
 @Composable
 fun TitleText(modifier: Modifier = Modifier) {
     Text(
-        text = "Memory Game",
-        color = Color.Black,
-        style = MaterialTheme.typography.titleMedium,
-        textAlign = TextAlign.Center,
-        modifier = modifier
+        text        = "Memory Game",
+        color       = Color.Yellow,
+        fontSize    = 30.sp,
+        textAlign   = TextAlign.Center,
+        style       = TextStyle(
+                                fontFamily = MaterialTheme.typography.titleMedium.fontFamily,
+                                shadow = Shadow(
+                                                color = Color.Black,
+                                                blurRadius = 6f // Adjust for thickness
+                                                )
+                                ),
+        modifier    = modifier.then(Modifier.padding(top=50.dp))
     )
 }
 
@@ -57,10 +67,10 @@ fun TitleText(modifier: Modifier = Modifier) {
 @Composable
 fun MatchCountText(text: String) {
     Text(
-        text = text,
-        color = Color.Black,
-        style = MaterialTheme.typography.titleMedium,
-        textAlign = TextAlign.Center
+        text        = text,
+        color       = Color.Black,
+        style       = MaterialTheme.typography.titleMedium,
+        textAlign   = TextAlign.Center
     )
 }
 
@@ -222,12 +232,12 @@ class MyButtonState: ViewModel() {
 }
 
 @Composable
-fun MyButton(state          : MyButtonState         = remember { MyButtonState() },
+fun MyButton(state          : MyButtonState    = remember { MyButtonState() },
              onClick        : () -> Unit,
              text           : String,
-             fontSize       : TextUnit              = 20.sp,
-             modifier       : Modifier              = Modifier,
-             contentPadding : PaddingValues         = PaddingValues(0.dp)) {
+             fontSize       : TextUnit         = 20.sp,
+             modifier       : Modifier         = Modifier,
+             contentPadding : PaddingValues    = PaddingValues(0.dp)) {
 
     Button(
         onClick         = { onClick() },
